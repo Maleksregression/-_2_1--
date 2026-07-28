@@ -1,499 +1,510 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Дом 107 м² на участке 2,3 сот. — Старый Оскол</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-    :root {
-      --body-bg: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #222222;
-      --header-bg: rgba(255,255,255,0.94);
-      --header-border: rgba(0,0,0,0.06);
-      --stat-card-bg: #f8f9fa;
-      --feature-bg: #f8f9fa;
-      --spec-odd: #fafafa;
-      --spec-border: #f0f0f0;
-      --price-color: #0b7e8c;
-      --stat-value-color: #222222;
-      --section-title-color: #111111;
-      --desc-text: #444444;
-      --spec-label: #888888;
-      --hero-counter-bg: rgba(0,0,0,0.6);
-      --hero-arrow-bg: rgba(255,255,255,0.85);
-      --hero-arrow-color: #333333;
-      --hero-arrow-hover-bg: #ffffff;
-      --mortgage-pill-bg: #e6f4f6;
-      --mortgage-pill-text: #0b7e8c;
-      --contact-bg: #ffffff;
-      --map-placeholder-bg: #e9ecef;
-      --share-btn-bg: #f0f0f0;
-      --share-btn-hover-bg: #e0e0e0;
-      --location-address-bg: #f8f9fa;
-      --lightbox-bg: rgba(0,0,0,0.92);
-      --lightbox-btn-color: #ffffff;
-    }
-    [data-theme="dark"] {
-      --body-bg: #121212;
-      --card-bg: #1e1e1e;
-      --text-color: #e0e0e0;
-      --header-bg: rgba(30,30,30,0.95);
-      --header-border: rgba(255,255,255,0.08);
-      --stat-card-bg: #2a2a2a;
-      --feature-bg: #2a2a2a;
-      --spec-odd: #2a2a2a;
-      --spec-border: #333333;
-      --price-color: #20b2aa;
-      --stat-value-color: #e0e0e0;
-      --section-title-color: #eeeeee;
-      --desc-text: #bbbbbb;
-      --spec-label: #aaaaaa;
-      --hero-counter-bg: rgba(0,0,0,0.8);
-      --hero-arrow-bg: rgba(50,50,50,0.9);
-      --hero-arrow-color: #eeeeee;
-      --hero-arrow-hover-bg: #555555;
-      --mortgage-pill-bg: #1a3a3a;
-      --mortgage-pill-text: #4dd0e1;
-      --contact-bg: #1e1e1e;
-      --map-placeholder-bg: #2a2a2a;
-      --share-btn-bg: #333333;
-      --share-btn-hover-bg: #444444;
-      --location-address-bg: #2a2a2a;
-      --lightbox-bg: rgba(0,0,0,0.95);
-      --lightbox-btn-color: #cccccc;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--body-bg);
-      color: var(--text-color);
-      line-height: 1.6;
-      transition: background 0.2s, color 0.2s;
-    }
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--header-border);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .header-logo { font-size: 24px; line-height: 1; }
-    .header-title { font-weight: 600; font-size: 15px; color: var(--text-color); white-space: nowrap; }
-    .header-subtitle { font-size: 12px; color: var(--spec-label); white-space: nowrap; }
-    .header-right { display: flex; align-items: center; gap: 8px; }
-    #themeToggle {
-      background: none; border: none; font-size: 26px;
-      cursor: pointer; padding: 6px; border-radius: 50%;
-      transition: background 0.2s; line-height: 1;
-    }
-    #themeToggle:hover { background: var(--share-btn-bg); }
-    .status-badge {
-      display: inline-block; background: #27ae60; color: #fff;
-      font-size: 11px; font-weight: 600; padding: 3px 10px;
-      border-radius: 20px; letter-spacing: 0.3px; white-space: nowrap;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-    .hero {
-      margin-top: 64px; position: relative; width: 100%; height: 55vh;
-      min-height: 350px; overflow: hidden; background: #e0e0e0;
-    }
-    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.65));
-      padding: 30px 20px; text-align: center;
-    }
-    .hero-overlay span {
-      color: #fff; font-size: 16px; font-weight: 500;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-    .section { padding: 40px 0; }
-    .section-title {
-      font-size: 28px; font-weight: 700; color: var(--section-title-color);
-      margin-bottom: 24px; padding-bottom: 10px;
-      border-bottom: 3px solid #0174FC; display: inline-block;
-    }
-    .card { background: var(--card-bg); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 32px; margin-bottom: 20px; }
-    .price-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px; margin-bottom: 28px; }
-    .price { font-size: 42px; font-weight: 800; color: var(--price-color); }
-    .price-label { font-size: 16px; color: var(--spec-label); font-weight: 400; }
-    .price-per-meter { font-size: 20px; font-weight: 600; color: var(--text-color); }
-    .mortgage-pill {
-      display: inline-block; background: var(--mortgage-pill-bg); color: var(--mortgage-pill-text);
-      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 24px;
-    }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-    .stat-card {
-      background: var(--stat-card-bg); border-radius: 14px; padding: 18px 16px;
-      text-align: center; transition: transform 0.2s;
-    }
-    .stat-card:hover { transform: translateY(-3px); }
-    .stat-icon {
-      width: 48px; height: 48px; border-radius: 50%; display: flex;
-      align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 10px;
-    }
-    .stat-icon.blue { background: #e3f0ff; } .stat-icon.green { background: #e3f9e5; }
-    .stat-icon.orange { background: #fff3e0; } .stat-icon.pink { background: #fce4ec; }
-    .stat-icon.purple { background: #f3e5f5; } .stat-icon.cyan { background: #e0f7fa; }
-    .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--spec-label); margin-bottom: 4px; }
-    .stat-value { font-size: 20px; font-weight: 700; color: var(--stat-value-color); }
-    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .feature-item {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--feature-bg); padding: 12px 16px; border-radius: 12px;
-      font-size: 14px; color: var(--text-color);
-    }
-    .feature-check { color: #27ae60; font-weight: 700; font-size: 18px; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .gallery-item {
-      aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; cursor: pointer;
-      transition: transform 0.3s; position: relative; background: #ddd;
-    }
-    .gallery-item:hover { transform: scale(1.03); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .desc-text { font-size: 16px; line-height: 1.8; color: var(--desc-text); }
-    .desc-text p { margin-bottom: 12px; }
-    .desc-text ul { list-style: none; padding: 0; margin-bottom: 12px; }
-    .desc-text ul li { padding: 4px 0 4px 20px; position: relative; }
-    .desc-text ul li::before { content: "•"; position: absolute; left: 0; color: #0174FC; font-weight: 700; }
-    .specs-grid { display: grid; grid-template-columns: 1fr 1fr; }
-    .spec-row {
-      display: flex; justify-content: space-between; padding: 10px 16px;
-      border-bottom: 1px solid var(--spec-border);
-    }
-    .spec-row:nth-child(odd) { background: var(--spec-odd); }
-    .spec-label { color: var(--spec-label); font-size: 14px; }
-    .spec-value { font-weight: 600; color: var(--text-color); font-size: 14px; }
-    .contact-section { text-align: center; padding: 32px; background: var(--contact-bg); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-    .contact-name { font-size: 20px; font-weight: 700; color: var(--text-color); margin-bottom: 8px; }
-    .contact-phone { font-size: 24px; font-weight: 700; color: #0174FC; }
-    .contact-phone a { color: #0174FC; text-decoration: none; }
-    .contact-phone a:hover { text-decoration: underline; }
-    .footer { text-align: center; padding: 32px 16px; color: var(--spec-label); font-size: 13px; line-height: 1.8; }
-    .lightbox {
-      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--lightbox-bg); z-index: 1000;
-      justify-content: center; align-items: center;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .lightbox-close {
-      position: absolute; top: 20px; right: 28px; font-size: 36px;
-      color: var(--lightbox-btn-color); cursor: pointer; background: none; border: none;
-      z-index: 1001;
-    }
-    .lightbox-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      font-size: 48px; color: var(--lightbox-btn-color); cursor: pointer;
-      background: none; border: none; padding: 12px 16px; z-index: 1001;
-      transition: opacity 0.2s; opacity: 0.7;
-    }
-    .lightbox-arrow:hover { opacity: 1; }
-    .lightbox-prev { left: 16px; }
-    .lightbox-next { right: 16px; }
-    @media (max-width: 768px) {
-      .header { padding: 8px 12px; }
-      .header-subtitle { display: none; }
-      .hero { height: 40vh; min-height: 280px; margin-top: 60px; }
-      .section { padding: 24px 0; }
-      .card { padding: 20px; }
-      .price { font-size: 32px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .features-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .specs-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 22px; }
-    }
-    @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .price-row { gap: 8px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1-к. квартира, 35,7 м² — Железнодорожный</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root {
+  --body-bg: #f8f9fa;
+  --card-bg: #fff;
+  --text-color: #222;
+  --header-bg: rgba(255,255,255,0.97);
+  --header-border: rgba(0,0,0,0.06);
+  --stat-card-bg: #f8f9fa;
+  --feature-bg: #f8f9fa;
+  --spec-odd: #fafafa;
+  --spec-border: #f0f0f0;
+  --price-color: #0b7e8c;
+  --stat-value-color: #222;
+  --section-title-color: #111;
+  --desc-text: #444;
+  --spec-label: #888;
+  --hero-counter-bg: rgba(0,0,0,0.6);
+  --hero-arrow-bg: rgba(255,255,255,0.85);
+  --hero-arrow-color: #333;
+  --hero-arrow-hover-bg: #fff;
+  --mortgage-pill-bg: #e6f4f6;
+  --mortgage-pill-text: #0b7e8c;
+  --contact-bg: #fff;
+  --map-placeholder-bg: #e9ecef;
+  --share-btn-bg: #f0f0f0;
+  --share-btn-hover-bg: #e0e0e0;
+  --location-address-bg: #f8f9fa;
+  --lightbox-bg: rgba(0,0,0,0.92);
+  --lightbox-btn-color: #fff;
+}
+[data-theme="dark"] {
+  --body-bg: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --header-bg: rgba(30,30,30,0.97);
+  --header-border: rgba(255,255,255,0.08);
+  --stat-card-bg: #2a2a2a;
+  --feature-bg: #2a2a2a;
+  --spec-odd: #2a2a2a;
+  --spec-border: #333;
+  --price-color: #20b2aa;
+  --stat-value-color: #e0e0e0;
+  --section-title-color: #eee;
+  --desc-text: #bbb;
+  --spec-label: #aaa;
+  --hero-counter-bg: rgba(0,0,0,0.8);
+  --hero-arrow-bg: rgba(50,50,50,0.9);
+  --hero-arrow-color: #eee;
+  --hero-arrow-hover-bg: #555;
+  --mortgage-pill-bg: #1a3a3a;
+  --mortgage-pill-text: #4dd0e1;
+  --contact-bg: #1e1e1e;
+  --map-placeholder-bg: #2a2a2a;
+  --share-btn-bg: #333;
+  --share-btn-hover-bg: #444;
+  --location-address-bg: #2a2a2a;
+  --lightbox-bg: rgba(0,0,0,0.95);
+  --lightbox-btn-color: #ccc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--body-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  backdrop-filter: blur(12px);
+  padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-left { display: flex; align-items: center; gap: 12px; }
+.header-logo { font-size: 20px; }
+.header-title { font-weight: 600; font-size: 15px; color: var(--text-color); }
+.header-subtitle { font-size: 12px; color: var(--spec-label); }
+.header-right { display: flex; align-items: center; gap: 8px; }
+#themeToggle {
+  background: none; border: none; font-size: 24px;
+  cursor: pointer; padding: 6px; border-radius: 50%;
+  transition: background 0.2s; line-height: 1;
+}
+#themeToggle:hover { background: var(--share-btn-bg); }
+.status-badge {
+  display: inline-block; background: #27ae60; color: #fff;
+  font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; letter-spacing: 0.3px;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.hero {
+  margin-top: 60px; position: relative; width: 100%; height: 55vh;
+  min-height: 350px; overflow: hidden;
+}
+.hero img { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  padding: 30px 20px; text-align: center;
+}
+.hero-overlay span {
+  color: #fff; font-size: 16px; font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.section { padding: 40px 0; }
+.section-title {
+  font-size: 28px; font-weight: 700; color: var(--section-title-color);
+  margin-bottom: 24px; padding-bottom: 10px;
+  border-bottom: 3px solid #0174FC; display: inline-block;
+}
+.card { background: var(--card-bg); border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); padding: 32px; margin-bottom: 20px; }
+.price-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+.price { font-size: 42px; font-weight: 800; color: var(--price-color); }
+.price-label { font-size: 16px; color: var(--spec-label); font-weight: 400; }
+.price-per-meter { font-size: 20px; font-weight: 600; color: var(--text-color); }
+.mortgage-pill {
+  display: inline-block; background: var(--mortgage-pill-bg); color: var(--mortgage-pill-text);
+  font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 24px;
+}
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--stat-card-bg); border-radius: 14px; padding: 18px 16px;
+  text-align: center; transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); }
+.stat-icon {
+  width: 44px; height: 44px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 10px;
+}
+.stat-icon.blue { background: #e3f0ff; } .stat-icon.green { background: #e3f9e5; }
+.stat-icon.orange { background: #fff3e0; } .stat-icon.pink { background: #fce4ec; }
+.stat-icon.purple { background: #f3e5f5; } .stat-icon.cyan { background: #e0f7fa; }
+.stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--spec-label); margin-bottom: 4px; }
+.stat-value { font-size: 20px; font-weight: 700; color: var(--stat-value-color); }
+.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.feature-item {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--feature-bg); padding: 12px 16px; border-radius: 12px;
+  font-size: 14px; color: var(--text-color);
+}
+.feature-check { color: #27ae60; font-weight: 700; font-size: 18px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.gallery-item {
+  aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; cursor: pointer;
+  transition: transform 0.3s; position: relative;
+}
+.gallery-item:hover { transform: scale(1.03); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+.desc-text { font-size: 16px; line-height: 1.8; color: var(--desc-text); }
+.desc-text p { margin-bottom: 12px; }
+.desc-text ul { list-style: none; padding: 0; margin-bottom: 12px; }
+.desc-text ul li { padding: 4px 0 4px 20px; position: relative; }
+.desc-text ul li::before { content: "•"; position: absolute; left: 0; color: #0174FC; font-weight: 700; }
+.specs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.spec-row {
+  display: flex; justify-content: space-between; padding: 10px 16px;
+  border-bottom: 1px solid var(--spec-border);
+}
+.spec-row:nth-child(odd) { background: var(--spec-odd); }
+.spec-label { color: var(--spec-label); font-size: 14px; }
+.spec-value { font-weight: 600; color: var(--text-color); font-size: 14px; }
+.contact-section { text-align: center; padding: 32px; background: var(--contact-bg); border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+.contact-name { font-size: 20px; font-weight: 700; color: var(--text-color); margin-bottom: 8px; }
+.contact-phone { font-size: 24px; font-weight: 700; color: #0174FC; }
+.contact-phone a { color: #0174FC; text-decoration: none; }
+.contact-phone a:hover { text-decoration: underline; }
+.footer { text-align: center; padding: 32px 16px; color: var(--spec-label); font-size: 13px; line-height: 1.8; }
+.lightbox {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--lightbox-bg); z-index: 1000;
+  justify-content: center; align-items: center;
+}
+.lightbox.open { display: flex; }
+.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+.lightbox-close {
+  position: absolute; top: 20px; right: 28px; font-size: 36px;
+  color: var(--lightbox-btn-color); cursor: pointer; background: none; border: none;
+  z-index: 1001;
+}
+.lightbox-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 48px; color: var(--lightbox-btn-color); cursor: pointer;
+  background: none; border: none; padding: 12px 16px; z-index: 1001;
+  transition: opacity 0.2s; opacity: 0.7;
+}
+.lightbox-arrow:hover { opacity: 1; }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+@media (max-width: 768px) {
+  .header { padding: 8px 12px; }
+  .header-subtitle { display: none; }
+  .hero { height: 40vh; min-height: 280px; }
+  .section { padding: 24px 0; }
+  .card { padding: 20px; }
+  .price { font-size: 32px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .specs-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 22px; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .price-row { gap: 8px; }
+}
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-left">
-      <span class="header-logo">🏠</span>
-      <span class="status-badge">Продажа</span>
-      <div>
-        <div class="header-title">Дом 107 м² · 2,3 сот.</div>
-        <div class="header-subtitle">ул. Володарского, Старый Оскол</div>
+
+<header class="header">
+  <div class="header-left">
+    <span class="header-logo">🏠</span>
+    <span class="status-badge">Продажа</span>
+    <div>
+      <div class="header-title">1-к. квартира · 35,7 м² · 3/5</div>
+      <div class="header-subtitle">ул. Богдана Хмельницкого, 26А, Железнодорожный р-н</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="https://60.img.avito.st/image/1/1.j9eOl7a4Iz64PuE7nLGY0qc3ITgwNqE2-DMhPD4-KzQ4.DHAIm_KihWJCMcRKi2MuDWwQk085A7xvx29lSkebd0E" alt="1-к. квартира" loading="eager">
+  <div class="hero-overlay"><span>📸 Фотогалерея снизу ↓</span></div>
+</section>
+
+<div class="container">
+  <section class="section">
+    <div class="card">
+      <div class="price-row">
+        <span class="price">3 600 000 ₽</span>
+        <span class="price-label">за объект</span>
+        <span class="price-per-meter">100 840 ₽/м²</span>
+        <span class="mortgage-pill">🏦 В ипотеку от 36 771 ₽/мес</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">🛏️</div>
+          <div class="stat-label">Комнат</div>
+          <div class="stat-value">1</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">📐</div>
+          <div class="stat-label">Общая площадь</div>
+          <div class="stat-value">35.7 м²</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">🏢</div>
+          <div class="stat-label">Этаж</div>
+          <div class="stat-value">3 / 5</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon pink">🍳</div>
+          <div class="stat-label">Кухня</div>
+          <div class="stat-value">8 м²</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple">🛋️</div>
+          <div class="stat-label">Жилая площадь</div>
+          <div class="stat-value">19 м²</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon cyan">🪟</div>
+          <div class="stat-label">Балкон</div>
+          <div class="stat-value">Лоджия</div>
+        </div>
       </div>
     </div>
-    <div class="header-right">
-      <button id="themeToggle" onclick="toggleTheme()" aria-label="Переключить тему">🌙</button>
-    </div>
-  </header>
-
-  <section class="hero">
-    <img src="https://30.img.avito.st/image/1/1.I-OBy7a5jwq3fA0Hy58e3ONqjQw_ag0ct2eNCDN-iwg.yiAe4mVfEwELOcoxH7qG-KulknzIkVUBNneAjsrRmjM?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==" alt="Дом на улице Володарского" loading="eager">
-    <div class="hero-overlay"><span>📸 Фотогалерея снизу ↓</span></div>
   </section>
 
-  <div class="container">
-    <section class="section">
-      <div class="card">
-        <div class="price-row">
-          <span class="price">7 000 000 ₽</span>
-          <span class="price-label">за объект</span>
-          <span class="price-per-meter">65 421 ₽/м²</span>
-          <span class="mortgage-pill">🏦 Возможна ипотека</span>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon blue">🛏️</div>
-            <div class="stat-label">Комнат</div>
-            <div class="stat-value">3</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon green">📐</div>
-            <div class="stat-label">Общая площадь</div>
-            <div class="stat-value">107 м²</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon orange">🏡</div>
-            <div class="stat-label">Участок</div>
-            <div class="stat-value">2,3 сот.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon pink">🏗️</div>
-            <div class="stat-label">Этажей</div>
-            <div class="stat-value">2</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon purple">📅</div>
-            <div class="stat-label">Год постройки</div>
-            <div class="stat-value">2000</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon cyan">🧱</div>
-            <div class="stat-label">Материал стен</div>
-            <div class="stat-value">Газоблоки</div>
-          </div>
-        </div>
+  <section class="section">
+    <h2 class="section-title">✅ Преимущества</h2>
+    <div class="features-grid">
+      <div class="feature-item"><span class="feature-check">✓</span> Дизайнерский ремонт</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Новая мебель и техника</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Не требует вложений</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Окна во двор</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Ликвидный вариант для аренды</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Рядом сосновый сквер</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Развитая инфраструктура</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Удобная транспортная доступность</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Возможна ипотека</div>
+      <div class="feature-item"><span class="feature-check">✓</span> Свободная продажа</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">📸 Фотогалерея</h2>
+    <div class="card">
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" onclick="openLightbox(0)"><img src="https://60.img.avito.st/image/1/1.j9eOl7a4Iz64PuE7nLGY0qc3ITgwNqE2-DMhPD4-KzQ4.DHAIm_KihWJCMcRKi2MuDWwQk085A7xvx29lSkebd0E" alt="Фото 1" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(1)"><img src="https://90.img.avito.st/image/1/1.6-jwT7a4RwHG5oUEqhi379nvRQdO7sUJhutFA0DmTwtG.-JpoZCDt1vskmhg42VbMUxgsmBGH-bSgEgUgtVHqTB8" alt="Фото 2" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(2)"><img src="https://40.img.avito.st/image/1/1.rIKZp7a4AGuvDsJuzfWVgrAHAm0nBoJj7wMCaSkOCGEv.-kkUEydzrfqNMqkPSUO4xAT_lXzReRSA7BlWUB_Wtc4" alt="Фото 3" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(3)"><img src="https://70.img.avito.st/image/1/1.U-x15La4_wVDTT0AX8l161xE_QPLRX0NA0D9B8VN9w_D.GSMC0qJgcU04yqavlZE9w6VhCBKFhRxJZmRbcpQjl8c" alt="Фото 4" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(4)"><img src="https://10.img.avito.st/image/1/1.0fHvrra4fRjZB78dwbGT9sYOfx5RD_8QmQp_Gl8HdRJZ.kWieWoODME_k61r9mT8aOGuEYzNqFB2yChk2XX0pMfE?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 5" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(5)"><img src="https://50.img.avito.st/image/1/1.-2Z157a4V49DTpWKD4i_YFxHVYnLRtWHA0NVjcVOX4XD.hJqRXGmFT5rG0A07u8K6P_p0EcymxyqygcnT-DzsUpA" alt="Фото 6" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(6)"><img src="https://30.img.avito.st/image/1/1.Y82V4ba4zySjSA0h3_ANyLxBzSIrQE0s40XNJiVIxy4j.o7bfx13aFwrV8rJuojqCrDxt0rR8dwhugFYEqrV6Idg?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 7" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(7)"><img src="https://10.img.avito.st/image/1/1.rvH8ULa4AhjK-cAdrEqe8dXwAB5C8YAQivQAGkz5ChJK.2FirZs-mkoOqf1LT6G-QxYFWS7OxuvgCyUEBY1lNPhM?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 8" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(8)"><img src="https://60.img.avito.st/image/1/1.l37Yl7a4O5fuPvmS-p2lfvE3OZFmNrmfrjM5lWg-M51u.W3CCuab1WXpmROSLgyF3zMVjgykYHPBjBHBJ3AHiR0s" alt="Фото 9" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(9)"><img src="https://30.img.avito.st/image/1/1.061M4La4f0R6Sb1BZv-KqmVAfULyQf1MOkR9RvxJd076.7L7Rtc43pQIg-OhM0rG9uACMFsEYMO5qHmWXSZMV2Po?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 10" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(10)"><img src="https://90.img.avito.st/image/1/1.Eea5yLa4vQ-PYX8Kl8QA45BovwkHaT8Hz2y_DQlhtQUP.9PNcYhT7aBbtrMlIiGm36vZ8Jva9Zj_O6mzLSoPq9VI" alt="Фото 11" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(11)"><img src="https://30.img.avito.st/image/1/1.a6IfoLa4x0spCQVORdVmojYAxU2hAUVDaQTFSa8Jz0Gp.FJ7to2fW11Ae9IPBi_oU0mQJZnSCHmY8qdG_XKTtoGg?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 12" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(12)"><img src="https://80.img.avito.st/image/1/1.QWaqF7a47Y-cvi-KpGZtYYO374kUtm-H3LPvjRq-5YUc.1RBwVl14UYllyY21H63Qcwbx7eu7yknmWHN4gi9Ve2Y" alt="Фото 13" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(13)"><img src="https://70.img.avito.st/image/1/1.dINrl7a42GpdPhpvD_YphEI32mzVNlpiHTPaaNs-0GDd.VSUWmgthr8mUbYutJMjR8nA7uxph5bjti1Vj6LH3wms" alt="Фото 14" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(14)"><img src="https://30.img.avito.st/image/1/1.BTnku7a4qdDSEmvV4uMwOc0bq9ZaGivYkh-r0lQSodpS.rO0w-pam8L8mtJs_LdESKJxNZ_nGjyijcyicWjrHtxM?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 15" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(15)"><img src="https://30.img.avito.st/image/1/1.LHhOy7a4gJF4YkKUGudsfmdrgpfwagKZOG-Ck_5iiJv4.-2KggG09Qh4fpWE29zsW4XjdPaQzxC8TX4PP8m_aBj4?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 16" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(16)"><img src="https://30.img.avito.st/image/1/1.qGWcJba4BIyqjMaJwFuKYrWFBooihIaE6oEGjiyMDIYq.kp79O7eJ7RNy3D3LwYglUZCQ-FzvOnd15yBm_pxIyCc?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 17" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(17)"><img src="https://80.img.avito.st/image/1/1.06hJgLa4f0F_Kb1EY7PLrWAgfUf3If1JPyR9Q_kpd0v_.nyI4LyEJdjxrIxL1TZ869p1NhjXWzE9oZeXSUgnR70k" alt="Фото 18" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(18)"><img src="https://30.img.avito.st/image/1/1.2Wakgra4dY-SK7eKmtmcYI0id4kaI_eH0iZ3jRQrfYUS.8w7jE9kkdyTMHLTnm-o0peAJfTiTMla4O6xnVilQ2yg?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 19" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(19)"><img src="https://30.img.avito.st/image/1/1.62jyAra4R4HEq4WEqGWkbtuiRYdMo8WJhKZFg0KrT4tE.WCM07QvkpOLy2qz1oM54rZX3oJCWQfch6PtkiSjsQGY?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 20" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(20)"><img src="https://10.img.avito.st/image/1/1.rTqT07a4AdOlesPWxb3vPLpzA9UtcoPb5XcD0SN6Cdkl.d99JqLzZmdN-c2eNZ6okrSMB2gkX4jLAhuw5eBjg6io?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 21" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(21)"><img src="https://30.img.avito.st/image/1/1.YMYwLba4zC8GhA4qfCBCwRmNzimOjE4nRonOLYCExCWG.DeJunopVEJcbJQxqMYC_JpvLbJpVvc48kWz6nxGzXck?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ" alt="Фото 22" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(22)"><img src="https://60.img.avito.st/image/1/1.IO049ra4jAQOX04BdPIN6hFWjgKGVw4MTlKOBohfhA6O.hrvmE45cX-6oaFGGNn08vwHoEFGI6Bp0HwAiFTCVaDQ" alt="Фото 23" loading="lazy"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2 class="section-title">✅ Преимущества</h2>
-      <div class="features-grid">
-        <div class="feature-item"><span class="feature-check">✓</span> Выход к реке Оскол</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Центральная часть города</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Гостиная 30 м² с окнами в пол</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Газовое отопление (2-х контурный котёл)</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Частично тёплый пол</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Кровля металлочерепица (утеплена)</div>
-        <div class="feature-item"><span class="feature-check">✓</span> 2 отдельных септика</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Летняя кухня 14 м²</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Кирпичный сарай и погреб</div>
-        <div class="feature-item"><span class="feature-check">✓</span> 2-х этажный блочный сарай</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Терраса</div>
-        <div class="feature-item"><span class="feature-check">✓</span> Раздельный санузел</div>
+  <section class="section">
+    <h2 class="section-title">📝 Описание</h2>
+    <div class="card">
+      <div class="desc-text">
+        <p>Продается уютная 1-комнатная квартира 36 м², стильная, с дизайнерским ремонтом, рядом с сосновым сквером «Лесная сказка»</p>
+        <p>Идеальный вариант для тех, кто ценит комфорт, стиль и выгодное вложение.</p>
+        <p><strong>Квартира отлично подойдет:</strong></p>
+        <ul>
+          <li>молодым людям без семьи — заезжай и живи без лишних вложений</li>
+          <li>молодой паре — комфортное пространство для старта совместной жизни</li>
+          <li>пожилому покупателю — спокойный район, все необходимое в шаговой доступности</li>
+        </ul>
+        <p><strong>Планировка продумана до мелочей:</strong></p>
+        <ul>
+          <li>просторная комната 19 м²</li>
+          <li>кухня 8 м²</li>
+          <li>современный совмещенный санузел</li>
+          <li>продуманы электрические выключатели освещения</li>
+        </ul>
+        <p>Выполнен качественный дизайнерский ремонт, новая мебель и техника — остается новому владельцу.</p>
+        <p><strong>Район с развитой инфраструктурой:</strong></p>
+        <ul>
+          <li>рядом сосновый сквер «Лесная сказка» для прогулок и отдыха</li>
+          <li>Промышленно-экономический колледж, электромеханический колледж</li>
+          <li>Сбербанк</li>
+          <li>остановка транспорта</li>
+          <li>железнодорожная станция</li>
+        </ul>
+        <p><strong>Преимущества покупки:</strong></p>
+        <ul>
+          <li>не требует вложений — экономия времени и денег</li>
+          <li>ликвидный вариант для аренды</li>
+          <li>удобная транспортная доступность</li>
+          <li>экологичное окружение</li>
+        </ul>
+        <p>Квартира подходит под любую форму оплаты — быстрый и удобный выход на сделку. Отличное сочетание цены, качества и расположения.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2 class="section-title">📸 Фотогалерея</h2>
-      <div class="card">
-        <div class="gallery-grid" id="galleryGrid"></div>
+  <section class="section">
+    <h2 class="section-title">📋 Характеристики</h2>
+    <div class="card">
+      <div class="specs-grid">
+        <div class="spec-row"><span class="spec-label">Количество комнат</span><span class="spec-value">1</span></div>
+        <div class="spec-row"><span class="spec-label">Общая площадь</span><span class="spec-value">35.7 м²</span></div>
+        <div class="spec-row"><span class="spec-label">Площадь кухни</span><span class="spec-value">8 м²</span></div>
+        <div class="spec-row"><span class="spec-label">Жилая площадь</span><span class="spec-value">19 м²</span></div>
+        <div class="spec-row"><span class="spec-label">Этаж</span><span class="spec-value">3 из 5</span></div>
+        <div class="spec-row"><span class="spec-label">Балкон или лоджия</span><span class="spec-value">лоджия</span></div>
+        <div class="spec-row"><span class="spec-label">Санузел</span><span class="spec-value">совмещенный</span></div>
+        <div class="spec-row"><span class="spec-label">Окна</span><span class="spec-value">во двор</span></div>
+        <div class="spec-row"><span class="spec-label">Ремонт</span><span class="spec-value">дизайнерский</span></div>
+        <div class="spec-row"><span class="spec-label">Способ продажи</span><span class="spec-value">свободная</span></div>
+        <div class="spec-row"><span class="spec-label">Тип дома</span><span class="spec-value">кирпичный</span></div>
+        <div class="spec-row"><span class="spec-label">Год постройки</span><span class="spec-value">1983</span></div>
+        <div class="spec-row"><span class="spec-label">Этажей в доме</span><span class="spec-value">5</span></div>
+        <div class="spec-row"><span class="spec-label">Пассажирский лифт</span><span class="spec-value">нет</span></div>
+        <div class="spec-row"><span class="spec-label">Грузовой лифт</span><span class="spec-value">нет</span></div>
+        <div class="spec-row"><span class="spec-label">Условия продажи</span><span class="spec-value">возможна ипотека</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2 class="section-title">📝 Описание</h2>
-      <div class="card">
-        <div class="desc-text">
-          <p>Жилой коттедж в центральной части города с выходом к реке Оскол.</p>
-          <p>Дом площадью <strong>107 м²</strong> на участке <strong>2,3 сотки</strong>. Построен в 2000 году, стены из газоблоков, фасад частично утеплен. Кровля металлочерепица (утеплена), плиты перекрытия. На участке обустроено 2 отдельных септика.</p>
-          <p><strong>1-й этаж:</strong> кухня, коридор, просторная гостиная 30 м² с большими окнами в пол, раздельный санузел. Напольное покрытие — ламинат, частично смонтирован тёплый пол. Установлен двухконтурный котёл.</p>
-          <p><strong>2-й этаж:</strong> 3 спальных комнаты, коридор, выход на балкон. Выполнена чистовая отделка стен, стяжка пола, разведена электрика.</p>
-          <p><strong>Хозпостройка:</strong> включает летнюю кухню 14 м², кирпичный сарай, двухэтажный блочный сарай и погреб.</p>
-        </div>
-      </div>
-    </section>
+  <section class="section">
+    <h2 class="section-title">📞 Контакты</h2>
+    <div class="contact-section">
+      <div class="contact-name">📋 Малек — агент недвижимости</div>
+      <div class="contact-phone"><a href="tel:+79611889644">+7 961 188 96 44</a></div>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2 class="section-title">📋 Характеристики</h2>
-      <div class="card">
-        <div class="specs-grid">
-          <div class="spec-row"><span class="spec-label">Количество комнат</span><span class="spec-value">3</span></div>
-          <div class="spec-row"><span class="spec-label">Общая площадь</span><span class="spec-value">107 м²</span></div>
-          <div class="spec-row"><span class="spec-label">Площадь участка</span><span class="spec-value">2,3 сот.</span></div>
-          <div class="spec-row"><span class="spec-label">Этажей в доме</span><span class="spec-value">2</span></div>
-          <div class="spec-row"><span class="spec-label">Категория земель</span><span class="spec-value">ИЖС</span></div>
-          <div class="spec-row"><span class="spec-label">Материал стен</span><span class="spec-value">Газоблоки</span></div>
-          <div class="spec-row"><span class="spec-label">Год постройки</span><span class="spec-value">2000</span></div>
-          <div class="spec-row"><span class="spec-label">Терраса</span><span class="spec-value">Есть</span></div>
-          <div class="spec-row"><span class="spec-label">Санузел</span><span class="spec-value">В доме, раздельный</span></div>
-          <div class="spec-row"><span class="spec-label">Ремонт</span><span class="spec-value">Косметический</span></div>
-          <div class="spec-row"><span class="spec-label">Электричество</span><span class="spec-value">Есть</span></div>
-          <div class="spec-row"><span class="spec-label">Отопление</span><span class="spec-value">Газовое</span></div>
-          <div class="spec-row"><span class="spec-label">Газ</span><span class="spec-value">В доме</span></div>
-          <div class="spec-row"><span class="spec-label">Продавец</span><span class="spec-value">Агентство "Держава"</span></div>
-        </div>
-      </div>
-    </section>
+  <footer class="footer">
+    © 2026 Все права защищены<br>
+    Источник: Avito.ru | ID объявления: 8190419185 | Обновлено: 28 июля 2026
+  </footer>
+</div>
 
-    <section class="section">
-      <h2 class="section-title">📍 Расположение</h2>
-      <div class="card">
-        <p style="color: var(--desc-text); font-size: 15px;">
-          Белгородская обл., Старооскольский г.о., Старый Оскол, ул. Володарского
-        </p>
-      </div>
-    </section>
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-arrow lightbox-prev" onclick="prevImage()">‹</button>
+  <img class="lightbox-img" id="lightboxImg" alt="">
+  <button class="lightbox-arrow lightbox-next" onclick="nextImage()">›</button>
+</div>
 
-    <section class="section">
-      <h2 class="section-title">📞 Контакты</h2>
-      <div class="contact-section">
-        <div class="contact-name">📋 Малек — агент недвижимости</div>
-        <div class="contact-phone"><a href="tel:+79611889644">+7 961 188 96 44</a></div>
-      </div>
-    </section>
+<script>
+const galleryImages = [
+  "https://60.img.avito.st/image/1/1.j9eOl7a4Iz64PuE7nLGY0qc3ITgwNqE2-DMhPD4-KzQ4.DHAIm_KihWJCMcRKi2MuDWwQk085A7xvx29lSkebd0E",
+  "https://90.img.avito.st/image/1/1.6-jwT7a4RwHG5oUEqhi379nvRQdO7sUJhutFA0DmTwtG.-JpoZCDt1vskmhg42VbMUxgsmBGH-bSgEgUgtVHqTB8",
+  "https://40.img.avito.st/image/1/1.rIKZp7a4AGuvDsJuzfWVgrAHAm0nBoJj7wMCaSkOCGEv.-kkUEydzrfqNMqkPSUO4xAT_lXzReRSA7BlWUB_Wtc4",
+  "https://70.img.avito.st/image/1/1.U-x15La4_wVDTT0AX8l161xE_QPLRX0NA0D9B8VN9w_D.GSMC0qJgcU04yqavlZE9w6VhCBKFhRxJZmRbcpQjl8c",
+  "https://10.img.avito.st/image/1/1.0fHvrra4fRjZB78dwbGT9sYOfx5RD_8QmQp_Gl8HdRJZ.kWieWoODME_k61r9mT8aOGuEYzNqFB2yChk2XX0pMfE?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://50.img.avito.st/image/1/1.-2Z157a4V49DTpWKD4i_YFxHVYnLRtWHA0NVjcVOX4XD.hJqRXGmFT5rG0A07u8K6P_p0EcymxyqygcnT-DzsUpA",
+  "https://30.img.avito.st/image/1/1.Y82V4ba4zySjSA0h3_ANyLxBzSIrQE0s40XNJiVIxy4j.o7bfx13aFwrV8rJuojqCrDxt0rR8dwhugFYEqrV6Idg?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://10.img.avito.st/image/1/1.rvH8ULa4AhjK-cAdrEqe8dXwAB5C8YAQivQAGkz5ChJK.2FirZs-mkoOqf1LT6G-QxYFWS7OxuvgCyUEBY1lNPhM?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://60.img.avito.st/image/1/1.l37Yl7a4O5fuPvmS-p2lfvE3OZFmNrmfrjM5lWg-M51u.W3CCuab1WXpmROSLgyF3zMVjgykYHPBjBHBJ3AHiR0s",
+  "https://30.img.avito.st/image/1/1.061M4La4f0R6Sb1BZv-KqmVAfULyQf1MOkR9RvxJd076.7L7Rtc43pQIg-OhM0rG9uACMFsEYMO5qHmWXSZMV2Po?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://90.img.avito.st/image/1/1.Eea5yLa4vQ-PYX8Kl8QA45BovwkHaT8Hz2y_DQlhtQUP.9PNcYhT7aBbtrMlIiGm36vZ8Jva9Zj_O6mzLSoPq9VI",
+  "https://30.img.avito.st/image/1/1.a6IfoLa4x0spCQVORdVmojYAxU2hAUVDaQTFSa8Jz0Gp.FJ7to2fW11Ae9IPBi_oU0mQJZnSCHmY8qdG_XKTtoGg?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://80.img.avito.st/image/1/1.QWaqF7a47Y-cvi-KpGZtYYO374kUtm-H3LPvjRq-5YUc.1RBwVl14UYllyY21H63Qcwbx7eu7yknmWHN4gi9Ve2Y",
+  "https://70.img.avito.st/image/1/1.dINrl7a42GpdPhpvD_YphEI32mzVNlpiHTPaaNs-0GDd.VSUWmgthr8mUbYutJMjR8nA7uxph5bjti1Vj6LH3wms",
+  "https://30.img.avito.st/image/1/1.BTnku7a4qdDSEmvV4uMwOc0bq9ZaGivYkh-r0lQSodpS.rO0w-pam8L8mtJs_LdESKJxNZ_nGjyijcyicWjrHtxM?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://30.img.avito.st/image/1/1.LHhOy7a4gJF4YkKUGudsfmdrgpfwagKZOG-Ck_5iiJv4.-2KggG09Qh4fpWE29zsW4XjdPaQzxC8TX4PP8m_aBj4?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://30.img.avito.st/image/1/1.qGWcJba4BIyqjMaJwFuKYrWFBooihIaE6oEGjiyMDIYq.kp79O7eJ7RNy3D3LwYglUZCQ-FzvOnd15yBm_pxIyCc?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://80.img.avito.st/image/1/1.06hJgLa4f0F_Kb1EY7PLrWAgfUf3If1JPyR9Q_kpd0v_.nyI4LyEJdjxrIxL1TZ869p1NhjXWzE9oZeXSUgnR70k",
+  "https://30.img.avito.st/image/1/1.2Wakgra4dY-SK7eKmtmcYI0id4kaI_eH0iZ3jRQrfYUS.8w7jE9kkdyTMHLTnm-o0peAJfTiTMla4O6xnVilQ2yg?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://30.img.avito.st/image/1/1.62jyAra4R4HEq4WEqGWkbtuiRYdMo8WJhKZFg0KrT4tE.WCM07QvkpOLy2qz1oM54rZX3oJCWQfch6PtkiSjsQGY?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://10.img.avito.st/image/1/1.rTqT07a4AdOlesPWxb3vPLpzA9UtcoPb5XcD0SN6Cdkl.d99JqLzZmdN-c2eNZ6okrSMB2gkX4jLAhuw5eBjg6io?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://30.img.avito.st/image/1/1.YMYwLba4zC8GhA4qfCBCwRmNzimOjE4nRonOLYCExCWG.DeJunopVEJcbJQxqMYC_JpvLbJpVvc48kWz6nxGzXck?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ",
+  "https://60.img.avito.st/image/1/1.IO049ra4jAQOX04BdPIN6hFWjgKGVw4MTlKOBohfhA6O.hrvmE45cX-6oaFGGNn08vwHoEFGI6Bp0HwAiFTCVaDQ"
+];
 
-    <footer class="footer">
-      © 2026 Все права защищены<br>
-      Источник: Avito.ru | ID объявления: 7508727773 | Обновлено: 22 мая 2026
-    </footer>
-  </div>
+let currentIndex = 0;
 
-  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <button class="lightbox-arrow lightbox-prev" onclick="prevImage()">‹</button>
-    <img class="lightbox-img" id="lightboxImg" alt="Просмотр фото">
-    <button class="lightbox-arrow lightbox-next" onclick="nextImage()">›</button>
-  </div>
+function openLightbox(index) {
+  currentIndex = index;
+  document.getElementById('lightboxImg').src = galleryImages[currentIndex];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-  <script>
-    const imageUrls = [
-      "https://30.img.avito.st/image/1/1.I-OBy7a5jwq3fA0Hy58e3ONqjQw_ag0ct2eNCDN-iwg.yiAe4mVfEwELOcoxH7qG-KulknzIkVUBNneAjsrRmjM?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://80.img.avito.st/image/1/1.lyRGILa5O81wl7nAZBbPHiSBOcv4gbnbcIw5z_SVP88.tvTQ_yY9KV64NCJtmT7vFOIEytZtNKKTMtBCi4YThN0",
-      "https://70.img.avito.st/image/1/1.-mSSuLa5Vo2kD9SA6qfaW_AZVIssGdSbpBRUjyANUo8.MaNBJEnsjDPuN4AJeZDLDW6Kywy5ti_DaXRwWOqfHxY",
-      "https://60.img.avito.st/image/1/1.t2jB77a5G4H3WJmMo6GNV6NOGYd_TpmX90MZg3NaH4M.pf3Pw8XtI4QcSLJKWBkzC2IZhOgzZL1wZTdqea008kY",
-      "https://70.img.avito.st/image/1/1.Cctrtba5pSJdAicvddE_9AkUpyTVFCc0XRmnINkAoSA.KoHVjXg0wuPDZ8uhOILliVohF1-pzj0Zrs6BjROPFrA",
-      "https://80.img.avito.st/image/1/1.zeSLEba5YQ29puMAnR6X3umwYws1sOMbvb1jDzmkZQ8.PXObM2iyXxdHl8ACnonzyima4eH4zaUq5s7TDqqmPME",
-      "https://30.img.avito.st/image/1/1.zeXYAba5YQzutuMBzgbE3bqgYwpmoOMa7q1jDmq0ZQ4.RXRMKnb2HBYcmItHaGs55-sWC0ab_kHGegl-2RVc5tc?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://50.img.avito.st/image/1/1.5qpk3ba5SkNSashOJPKSkwZ8SEXafMhVUnFIQdZoTkE.f9GxxxjWc9B69PwTXqD-HepvTa8eB3M30N4gLPI02rE",
-      "https://00.img.avito.st/image/1/1.tOyH-ra5GAWxTZoI4_Sx1OVbGgM5W5oTsVYaBzVPHAc.dEHHaO2mFPgI9jviYRHklC-TsZXeTYl3ZmgS5Nt2Txw?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://60.img.avito.st/image/1/1.Rh73cLa56vfBx2j693E-J5XR6PFJ0Wjhwdzo9UXF7vU.DKaJ1uA472ovz6E2zdMhEnXAgSQaCcgD3npgJmcCty0",
-      "https://w40.img.avito.st/image/1/1.LyVAILa5g8x2lwHBEhhzHyKBgcr-gQHadoyBzvKVh84.apb57XdImhvpHUQ7tGFBdyQqEfWKuF_J8eQ5VzKY5cg",
-      "https://10.img.avito.st/image/1/1.h4M1b7a5K2oD2KlnN2nRuVfOKWyLzql8A8MpaIfaL2g.L-oon65-iNWVwfbaED8poYq0BsfalnoaGa8mnGxaqao?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://00.img.avito.st/image/1/1.P2gcq7a5k4EqHBGMbu9wUX4KkYeiChGXKgeRg64el4M.XL1Po64odoKdt7GqdOt-d1VYBfjxtitBAcrY7CvU5-I?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://10.img.avito.st/image/1/1.WvAK17a59hk8YHQUMp5jz2h29B-0dnQPPHv0G7hi8hs.9qK8acG6MMjO_QvVgqXw6ZvrREEduj4eDCf7p1Ob0Gg?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://40.img.avito.st/image/1/1.26OPCLa5d0q5v_VHtTfWm-2pdUwxqfVcuaR1SD29c0g.Jg46JfncPr47y7ojd-G4QWbvUXti1Y7XJMimR_DDh_U",
-      "https://00.img.avito.st/image/1/1.nOyHkra5MAWxJbIIs_SZ1OUzMgM5M7ITsT4yBzUnNAc.wnpExeJFMuDHVzix-nk8N-UXTwEi8FdubWiBN0aEVyw?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://80.img.avito.st/image/1/1.3gH3G7a5cujBrPDlx2T-PpW6cO5JuvD-wbdw6kWuduo.uR8GHUHdD8OIsmD_MPtAszshJJnqRxadAD0jDq4sDZ4",
-      "https://40.img.avito.st/image/1/1.-GJm17a5VItQYNaGGpyOWwR2Vo3YdtadUHtWidRiUIk.Fy8ybQk8TLiuRFdOrc-igIqjAg_0ZK4N4cxWuEOTp6o",
-      "https://70.img.avito.st/image/1/1.ZiYa4ra5ys8sVUjCWodsHnhDyMmkQ0jZLE7IzahXzs0.3AaCj9ZK8gg8lKimgwqmci4E7RB-HVdT3pMoQ6A78IE",
-      "https://00.img.avito.st/image/1/1.xYo8rba5aWMKGutuOr7Dsl4Ma2WCDOt1CgFrYY4YbWE.3nhFAd1a1iDPS6ESOiDyYs-XtvEcaj4qO7ZElHRspO4?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://40.img.avito.st/image/1/1.u2OM47a5F4q6VJWH9qXMWu5CFYwyQpWcuk8ViD5WE4g.U4PW8DvWOWTe9QE-QkR8gXXeITD_NW8M3vNvQjvXVyA",
-      "https://70.img.avito.st/image/1/1.2p-tALa5dnabt_R7lQvsoM-hdHATofRgm6x0dB-1cnQ.YCdNA8oMsUgalo0SE5K6LUlYw184MWTTCePFdYBQiRc",
-      "https://90.img.avito.st/image/1/1.6UtQIra5RaJmlcevDnnmczKDR6Tug8e0Zo5HoOKXQaA.lsDO8HIdyDhHNUTIfANrg7zpevs1QtjhWgFN2XP_wxg",
-      "https://90.img.avito.st/image/1/1.dqp7Cba52kNNvlhOG3R8khmo2EXFqFhVTaXYQcm83kE.-sKYSDpycUQC1YGca1ASLXO6Y6da8m6wiTayYUOBHkk",
-      "https://90.img.avito.st/image/1/1.DtD3cba5ojnBxiA050l46ZXQoD9J0CAvwd2gO0XEpjs.gmBCwnqOZGAvz9Mb1mGXX-j98coUlprd5qIdsJ-w5iI",
-      "https://00.img.avito.st/image/1/1.P2h6Zba5k4FM0hGMCD1rUhjEkYfExBGXTMmRg8jQl4M.vjQW0gr-6ro_qZtT-deTCJB79T_kX3ocRQjmqUOwxo4?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://40.img.avito.st/image/1/1.aQKfg7a5xeupNEfmwZ4cO_0ix-0hIkf9qS_H6S02wek.kQZuXzd2JU160y5fGaVINI2z1MWpQ81v-DjocUIlD70",
-      "https://30.img.avito.st/image/1/1.NUL8rba5mavKGhummt17e54Mm61CDBu9ygGbqU4Ynak.C291ye60-UCtYo980gPaOZmYPBBikeJ6FBL-EX5eCGE?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://10.img.avito.st/image/1/1.MwRen7a5n-1oKB3gNLdvPjw-nevgPh37aDOd7-wqm-8.ehn3pVvcS01zOBSetxqddThR1kK88BiXf3K-mk0CMsI?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://00.img.avito.st/image/1/1.yJ71c7a5ZHfDxOZ66RiHp5fSZnFL0uZhw99mdUfGYHU.yopky8riFz9n3aIcfMNK9X57sE7fuCMagRINmop2QP4?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://30.img.avito.st/image/1/1.P2gSE7a5k4EkpBGMYCdKUXCykYesshGXJL-Rg6Cml4M.VZXNmsRS5PGYtHkEPIpKw0Mk7rYpPl5hY6bZ_dprpPw?cqp=2.u3NCSNufGJscbkbcTnB31iWF9mNdkZV17CfHaAg72eFO7oRH9LnvmRn80XUuwm6DChCt8IaEfKU2EJELfVQEoXVU2aPjLQ==",
-      "https://90.img.avito.st/image/1/1.-qXCvba5Vkz0CtRBuva6n6AcVEp8HNRa9BFUTnAIUk4.t1q6fwsYycNTZ9wwvEoATcUTsyMmhbJsXgKx5Rx8xeY"
-    ];
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-    const galleryGrid = document.getElementById('galleryGrid');
-    function renderGallery() {
-      if (!galleryGrid) return;
-      galleryGrid.innerHTML = imageUrls.map((url, index) => `
-        <div class="gallery-item" onclick="openLightbox(${index})">
-          <img src="${url}" alt="Фото ${index + 1}" loading="lazy">
-        </div>
-      `).join('');
-    }
-    renderGallery();
+function closeLightboxOutside(e) {
+  if (e.target === e.currentTarget) closeLightbox();
+}
 
-    let currentIndex = 0;
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
+function prevImage() {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  document.getElementById('lightboxImg').src = galleryImages[currentIndex];
+}
 
-    function openLightbox(index) {
-      if (!lightbox || !lightboxImg) return;
-      currentIndex = index;
-      lightboxImg.src = imageUrls[currentIndex];
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+function nextImage() {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  document.getElementById('lightboxImg').src = galleryImages[currentIndex];
+}
 
-    function closeLightbox() {
-      if (!lightbox) return;
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') prevImage();
+  if (e.key === 'ArrowRight') nextImage();
+});
 
-    function closeLightboxOutside(e) {
-      if (e.target === e.currentTarget) closeLightbox();
-    }
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.setAttribute('data-theme', 'light');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  }
+}
 
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
-      if (lightboxImg) lightboxImg.src = imageUrls[currentIndex];
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % imageUrls.length;
-      if (lightboxImg) lightboxImg.src = imageUrls[currentIndex];
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (!lightbox || !lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') prevImage();
-      if (e.key === 'ArrowRight') nextImage();
-    });
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      if (html.getAttribute('data-theme') === 'dark') {
-        html.setAttribute('data-theme', 'light');
-        if (btn) btn.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        if (btn) btn.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      }
-    }
-
-    (function() {
-      const saved = localStorage.getItem('theme');
-      const btn = document.getElementById('themeToggle');
-      if (saved === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        if (btn) btn.textContent = '☀️';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        if (btn) btn.textContent = '🌙';
-      }
-    })();
-  </script>
+(function() {
+  const saved = localStorage.getItem('theme');
+  const btn = document.getElementById('themeToggle');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    btn.textContent = '🌙';
+  }
+})();
+</script>
 </body>
 </html>
